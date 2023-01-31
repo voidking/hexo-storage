@@ -3,7 +3,8 @@ data:
   seatunnel.streaming.conf: |+
     env {
       execution.parallelism = 1
-      job.mode = "BATCH"
+      job.mode = "STREAMING"
+      checkpoint.interval = 2000
     }
 
     source {

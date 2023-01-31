@@ -1,45 +1,30 @@
-2023-01-31 07:48:45,688 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Resolved JobManager address, beginning registration
-2023-01-31 07:48:45,727 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Successful registration at job manager akka.tcp://flink@seatunnel-flink-streaming-example.flink-operator:6123/user/rpc/jobmanager_2 for job b62138be24d8b7069413b0c56b9cca6a.
-2023-01-31 07:48:45,728 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Establish JobManager connection for job b62138be24d8b7069413b0c56b9cca6a.
-2023-01-31 07:48:45,731 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Offer reserved slots to the leader of job b62138be24d8b7069413b0c56b9cca6a.
-2023-01-31 07:48:46,102 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Activate slot 8f5915a927d0a8d212394202bbc82fcd.
-2023-01-31 07:48:46,112 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Activate slot 8f5915a927d0a8d212394202bbc82fcd.
-2023-01-31 07:48:46,185 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Received task Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307), deploy into slot with allocation id 8f5915a927d0a8d212394202bbc82fcd.
-2023-01-31 07:48:46,187 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307) switched from CREATED to DEPLOYING.
-2023-01-31 07:48:46,199 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Loading JAR files for task Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307) [DEPLOYING].
-2023-01-31 07:48:46,209 INFO  org.apache.flink.runtime.blob.BlobClient                     [] - Downloading b62138be24d8b7069413b0c56b9cca6a/p-1d78e4d167702824b330137f62e910960b3d05fd-6b1935e49703b0c1e873fb7a027c51c6 from seatunnel-flink-streaming-example.flink-operator/100.103.244.76:6124
-2023-01-31 07:48:47,001 INFO  org.apache.flink.runtime.blob.BlobClient                     [] - Downloading b62138be24d8b7069413b0c56b9cca6a/p-d2d8cda79e942387b3601d36fb65eab88ab698a8-4f2b5321397e05596f0d68d76e4c15a9 from seatunnel-flink-streaming-example.flink-operator/100.103.244.76:6124
-2023-01-31 07:48:47,005 INFO  org.apache.flink.runtime.blob.BlobClient                     [] - Downloading b62138be24d8b7069413b0c56b9cca6a/p-5809246fbff392040231b51c8f90b9378b2f524e-921d9dded5d47681d4cc680ed77c30a2 from seatunnel-flink-streaming-example.flink-operator/100.103.244.76:6124
-2023-01-31 07:48:47,011 INFO  org.apache.flink.runtime.blob.BlobClient                     [] - Downloading b62138be24d8b7069413b0c56b9cca6a/p-70df8a1f3da4eb8f4a7da9067acf072ce854a82f-20d6e67d7eb52d79a465a4f606cf8458 from seatunnel-flink-streaming-example.flink-operator/100.103.244.76:6124
-2023-01-31 07:48:47,104 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using application-defined state backend: org.apache.flink.streaming.api.operators.sorted.state.BatchExecutionStateBackend@65d5c9cb
-2023-01-31 07:48:47,107 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using application defined checkpoint storage: org.apache.flink.streaming.api.operators.sorted.state.BatchExecutionCheckpointStorage@7743e838
-2023-01-31 07:48:47,118 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307) switched from DEPLOYING to INITIALIZING.
-fields : name, age
-types : STRING, INT
-2023-01-31 07:48:47,609 INFO  org.apache.seatunnel.translation.flink.source.BaseSeaTunnelSourceFunction [] - Consumer subtask 0 has no restore state.
-2023-01-31 07:48:47,619 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307) switched from INITIALIZING to RUNNING.
-2023-01-31 07:48:47,632 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceSplitEnumerator [] - Starting to calculate splits.
-2023-01-31 07:48:47,632 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceReader [] - wait split!
-2023-01-31 07:48:47,639 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceSplitEnumerator [] - Calculated splits successfully, the size of splits is 1.
-2023-01-31 07:48:47,639 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceSplitEnumerator [] - Assigning splits to readers 0 [FakeSourceSplit(splitId=0, rowNum=160000)]
-subtaskIndex=0: row=1 : IgGVd, 1506915072
-subtaskIndex=0: row=2 : zTiLu, 579155907
-subtaskIndex=0: row=3 : QRyfR, 2037237081
 ...
-subtaskIndex=0: row=159994 : WKjVK, 557664873
-subtaskIndex=0: row=159995 : eFjwf, 858252723
-subtaskIndex=0: row=159996 : apRKx, 620198359
-subtaskIndex=0: row=159997 : LkSWN, 226796912
-subtaskIndex=0: row=159998 : dUvUJ, 1831952871
-subtaskIndex=0: row=159999 : rkMmF, 321170733
-subtaskIndex=0: row=160000 : MIXvf, 1035402223
-2023-01-31 07:48:52,744 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceReader [] - 160000 rows of data have been generated in split(0). Generation time: 1675151328639
-2023-01-31 07:48:52,744 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceReader [] - Closed the bounded fake source
-2023-01-31 07:48:53,769 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307) switched from RUNNING to FINISHED.
-2023-01-31 07:48:53,769 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Freeing task resources for Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 (04f3e7ed39b8903bc724362867613307).
-2023-01-31 07:48:53,772 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Un-registering task and sending final execution state FINISHED to JobManager for task Source: SeaTunnel FakeSource -> Sink Writer: Console (1/1)#0 04f3e7ed39b8903bc724362867613307.
-2023-01-31 07:48:53,896 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Free slot TaskSlot(index:0, state:ACTIVE, resource profile: ResourceProfile{cpuCores=0.5000000000000000, taskHeapMemory=12.800mb (13421771 bytes), taskOffHeapMemory=0 bytes, managedMemory=115.200mb (120795957 bytes), networkMemory=32.000mb (33554432 bytes)}, allocationId: 8f5915a927d0a8d212394202bbc82fcd, jobId: b62138be24d8b7069413b0c56b9cca6a).
-2023-01-31 07:48:53,909 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Remove job b62138be24d8b7069413b0c56b9cca6a from job leader monitoring.
-2023-01-31 07:48:53,912 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Close JobManager connection for job b62138be24d8b7069413b0c56b9cca6a.
-2023-01-31 07:48:55,839 INFO  org.apache.flink.kubernetes.taskmanager.KubernetesTaskExecutorRunner [] - RECEIVED SIGNAL 15: SIGTERM. Shutting down as requested.
-2023-01-31 07:48:55,845 INFO  org.apache.flink.runtime.blob.PermanentBlobCache             [] - Shutting down BLOB cache
+subtaskIndex=0: row=159973 : dnXGt, 773610436
+subtaskIndex=0: row=159974 : NEXRW, 863470851
+subtaskIndex=0: row=159975 : cqULO, 107163682
+subtaskIndex=0: row=159976 : OmNcU, 982950047
+subtaskIndex=0: row=159977 : Jhuju, 294110230
+subtaskIndex=0: row=159978 : FIzEg, 540523141
+subtaskIndex=0: row=159979 : BYFHy, 1475148249
+subtaskIndex=0: row=159980 : KNvsw, 509871663
+subtaskIndex=0: row=159981 : KLMrJ, 1741219404
+subtaskIndex=0: row=159982 : ahItm, 1937482154
+subtaskIndex=0: row=159983 : KqpKR, 1926088166
+subtaskIndex=0: row=159984 : RizwC, 1347246805
+subtaskIndex=0: row=159985 : fxDCR, 1463655046
+subtaskIndex=0: row=159986 : ceIvN, 1770590074
+subtaskIndex=0: row=159987 : gdSIh, 474364537
+subtaskIndex=0: row=159988 : ARsxH, 1587021102
+subtaskIndex=0: row=159989 : wqDVv, 787455116
+subtaskIndex=0: row=159990 : RYZiD, 1504043291
+subtaskIndex=0: row=159991 : VVgpp, 978840000
+subtaskIndex=0: row=159992 : JxrOC, 1493825495
+subtaskIndex=0: row=159993 : YmCZR, 654146216
+subtaskIndex=0: row=159994 : LdmUn, 643140261
+subtaskIndex=0: row=159995 : tURkE, 837012821
+subtaskIndex=0: row=159996 : uPDfd, 2021489045
+subtaskIndex=0: row=159997 : mjrdG, 2074957853
+subtaskIndex=0: row=159998 : xbeUi, 864518418
+subtaskIndex=0: row=159999 : sSWLb, 1924451911
+subtaskIndex=0: row=160000 : AuPlM, 1255017876
+2023-01-31 12:14:02,737 INFO  org.apache.seatunnel.connectors.seatunnel.fake.source.FakeSourceReader [] - 160000 rows of data have been generated in split(0). Generation time: 1675167239217
