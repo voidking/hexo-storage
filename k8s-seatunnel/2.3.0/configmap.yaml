@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  seatunnel.streaming.conf: |+
+    env {
+      execution.parallelism = 1
+      job.mode = "BATCH"
+    }
+
+    source {
+        FakeSource {
+          result_table_name = "fake"
+          row.num = 160000
+          schema = {
+            fields {
+              name = "string"
+              age = "int"
+            }
+          }
+        }
+    }
+
+    transform {
+
+    }
+
+    sink {
+      Console {}
+    }
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: seatunnel-config

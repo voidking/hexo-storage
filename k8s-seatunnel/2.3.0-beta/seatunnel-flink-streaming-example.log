@@ -1,0 +1,357 @@
+[root@localhost seatunnel]# kubectl logs deploy/seatunnel-flink-streaming-example -n flink-operator
+sed: couldn't open temporary file /opt/flink/conf/sed34xBF1: Read-only file system
+sed: couldn't open temporary file /opt/flink/conf/sedxam5on: Read-only file system
+/docker-entrypoint.sh: line 73: /opt/flink/conf/flink-conf.yaml: Read-only file system
+sed: couldn't open temporary file /opt/flink/conf/sedq4E6s3: Read-only file system
+/docker-entrypoint.sh: line 88: /opt/flink/conf/flink-conf.yaml.tmp: Read-only file system
+Starting kubernetes-application as a console application on host seatunnel-flink-streaming-example-65ddbd8dfb-hv62g.
+2023-01-30 03:37:17,014 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - --------------------------------------------------------------------------------
+2023-01-30 03:37:17,018 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  Preconfiguration:
+2023-01-30 03:37:17,018 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -
+
+
+RESOURCE_PARAMS extraction logs:
+jvm_params: -Xmx469762048 -Xms469762048 -XX:MaxMetaspaceSize=268435456
+dynamic_configs: -D jobmanager.memory.off-heap.size=134217728b -D jobmanager.memory.jvm-overhead.min=201326592b -D jobmanager.memory.jvm-metaspace.size=268435456b -D jobmanager.memory.heap.size=469762048b -D jobmanager.memory.jvm-overhead.max=201326592b
+logs: INFO  [] - Loading configuration property: blob.server.port, 6124
+INFO  [] - Loading configuration property: kubernetes.jobmanager.annotations, flinkdeployment.flink.apache.org/generation:2
+INFO  [] - Loading configuration property: kubernetes.jobmanager.replicas, 1
+INFO  [] - Loading configuration property: jobmanager.rpc.address, seatunnel-flink-streaming-example.flink-operator
+INFO  [] - Loading configuration property: kubernetes.taskmanager.cpu, 1.0
+INFO  [] - Loading configuration property: kubernetes.service-account, flink
+INFO  [] - Loading configuration property: kubernetes.cluster-id, seatunnel-flink-streaming-example
+INFO  [] - Loading configuration property: $internal.application.program-args, --config;/data/flink.streaming.conf
+INFO  [] - Loading configuration property: kubernetes.container.image, seatunnel:2.3.0-beta-flink-1.13
+INFO  [] - Loading configuration property: parallelism.default, 2
+INFO  [] - Loading configuration property: kubernetes.namespace, flink-operator
+INFO  [] - Loading configuration property: taskmanager.numberOfTaskSlots, 2
+INFO  [] - Loading configuration property: kubernetes.rest-service.exposed.type, ClusterIP
+INFO  [] - Loading configuration property: kubernetes.jobmanager.owner.reference, kind:FlinkDeployment,apiVersion:flink.apache.org/v1beta1,blockOwnerDeletion:false,controller:false,name:seatunnel-flink-streaming-example,uid:f747ba5c-d6aa-4eda-b48a-657129ea3550
+INFO  [] - Loading configuration property: $internal.application.main, org.apache.seatunnel.core.starter.flink.SeatunnelFlink
+INFO  [] - Loading configuration property: taskmanager.memory.process.size, 1024m
+INFO  [] - Loading configuration property: kubernetes.internal.jobmanager.entrypoint.class, org.apache.flink.kubernetes.entrypoint.KubernetesApplicationClusterEntrypoint
+INFO  [] - Loading configuration property: pipeline.name, seatunnel-flink-streaming-example
+INFO  [] - Loading configuration property: kubernetes.pod-template-file, /tmp/flink_op_generated_podTemplate_7854287393297098984.yaml
+INFO  [] - Loading configuration property: web.cancel.enable, false
+INFO  [] - Loading configuration property: execution.target, kubernetes-application
+INFO  [] - Loading configuration property: jobmanager.memory.process.size, 1024m
+INFO  [] - Loading configuration property: taskmanager.rpc.port, 6122
+INFO  [] - Loading configuration property: internal.cluster.execution-mode, NORMAL
+INFO  [] - Loading configuration property: $internal.pipeline.job-id, 93d6371daad64950107e02a7445c6182
+INFO  [] - Loading configuration property: execution.checkpointing.externalized-checkpoint-retention, RETAIN_ON_CANCELLATION
+INFO  [] - Loading configuration property: pipeline.jars, local:///opt/seatunnel/lib/seatunnel-flink-starter.jar
+INFO  [] - Loading configuration property: kubernetes.jobmanager.cpu, 1.0
+INFO  [] - Loading configuration property: $internal.flink.version, v1_13
+INFO  [] - The derived from fraction jvm overhead memory (102.400mb (107374184 bytes)) is less than its min value 192.000mb (201326592 bytes), min value will be used instead
+INFO  [] - Final Master Memory configuration:
+INFO  [] -   Total Process Memory: 1024.000mb (1073741824 bytes)
+INFO  [] -     Total Flink Memory: 576.000mb (603979776 bytes)
+INFO  [] -       JVM Heap:         448.000mb (469762048 bytes)
+INFO  [] -       Off-heap:         128.000mb (134217728 bytes)
+INFO  [] -     JVM Metaspace:      256.000mb (268435456 bytes)
+INFO  [] -     JVM Overhead:       192.000mb (201326592 bytes)
+
+2023-01-30 03:37:17,018 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - --------------------------------------------------------------------------------
+2023-01-30 03:37:17,018 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  Starting KubernetesApplicationClusterEntrypoint (Version: 1.13.6, Scala: 2.12, Rev:b2ca390, Date:2022-02-03T14:54:22+01:00)
+2023-01-30 03:37:17,018 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  OS current user: flink
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  Current Hadoop/Kerberos user: <no hadoop dependency found>
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  JVM: OpenJDK 64-Bit Server VM - Oracle Corporation - 1.8/25.342-b07
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  Maximum heap size: 433 MiBytes
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  JAVA_HOME: /usr/local/openjdk-8
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  No Hadoop Dependency available
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  JVM Options:
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -Xmx469762048
+2023-01-30 03:37:17,019 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -Xms469762048
+2023-01-30 03:37:17,020 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -XX:MaxMetaspaceSize=268435456
+2023-01-30 03:37:17,020 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -Dlog.file=/opt/flink/log/flink--kubernetes-application-0-seatunnel-flink-streaming-example-65ddbd8dfb-hv62g.log
+2023-01-30 03:37:17,020 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -Dlog4j.configuration=file:/opt/flink/conf/log4j-console.properties
+2023-01-30 03:37:17,020 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -Dlog4j.configurationFile=file:/opt/flink/conf/log4j-console.properties
+2023-01-30 03:37:17,020 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -Dlogback.configurationFile=file:/opt/flink/conf/logback-console.xml
+2023-01-30 03:37:17,020 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  Program Arguments:
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -D
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     jobmanager.memory.off-heap.size=134217728b
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -D
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     jobmanager.memory.jvm-overhead.min=201326592b
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -D
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     jobmanager.memory.jvm-metaspace.size=268435456b
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -D
+2023-01-30 03:37:17,021 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     jobmanager.memory.heap.size=469762048b
+2023-01-30 03:37:17,022 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     -D
+2023-01-30 03:37:17,022 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -     jobmanager.memory.jvm-overhead.max=201326592b
+2023-01-30 03:37:17,022 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] -  Classpath: /opt/flink/lib/flink-csv-1.13.6.jar:/opt/flink/lib/flink-json-1.13.6.jar:/opt/flink/lib/flink-shaded-zookeeper-3.4.14.jar:/opt/flink/lib/flink-table-blink_2.12-1.13.6.jar:/opt/flink/lib/flink-table_2.12-1.13.6.jar:/opt/flink/lib/log4j-1.2-api-2.17.1.jar:/opt/flink/lib/log4j-api-2.17.1.jar:/opt/flink/lib/log4j-core-2.17.1.jar:/opt/flink/lib/log4j-slf4j-impl-2.17.1.jar:/opt/flink/lib/flink-dist_2.12-1.13.6.jar:::
+2023-01-30 03:37:17,022 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - --------------------------------------------------------------------------------
+2023-01-30 03:37:17,023 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - Registered UNIX signal handlers for [TERM, HUP, INT]
+2023-01-30 03:37:17,035 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: blob.server.port, 6124
+2023-01-30 03:37:17,035 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.annotations, flinkdeployment.flink.apache.org/generation:2
+2023-01-30 03:37:17,035 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.replicas, 1
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.rpc.address, seatunnel-flink-streaming-example.flink-operator
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.taskmanager.cpu, 1.0
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.service-account, flink
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.cluster-id, seatunnel-flink-streaming-example
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.application.program-args, --config;/data/flink.streaming.conf
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.container.image, seatunnel:2.3.0-beta-flink-1.13
+2023-01-30 03:37:17,036 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: parallelism.default, 2
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.namespace, flink-operator
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.numberOfTaskSlots, 2
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.rest-service.exposed.type, ClusterIP
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.owner.reference, kind:FlinkDeployment,apiVersion:flink.apache.org/v1beta1,blockOwnerDeletion:false,controller:false,name:seatunnel-flink-streaming-example,uid:f747ba5c-d6aa-4eda-b48a-657129ea3550
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.application.main, org.apache.seatunnel.core.starter.flink.SeatunnelFlink
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.memory.process.size, 1024m
+2023-01-30 03:37:17,037 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.internal.jobmanager.entrypoint.class, org.apache.flink.kubernetes.entrypoint.KubernetesApplicationClusterEntrypoint
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: pipeline.name, seatunnel-flink-streaming-example
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.pod-template-file, /tmp/flink_op_generated_podTemplate_7854287393297098984.yaml
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: web.cancel.enable, false
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: execution.target, kubernetes-application
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.memory.process.size, 1024m
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.rpc.port, 6122
+2023-01-30 03:37:17,038 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: internal.cluster.execution-mode, NORMAL
+2023-01-30 03:37:17,039 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.pipeline.job-id, 93d6371daad64950107e02a7445c6182
+2023-01-30 03:37:17,039 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: execution.checkpointing.externalized-checkpoint-retention, RETAIN_ON_CANCELLATION
+2023-01-30 03:37:17,039 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: pipeline.jars, local:///opt/seatunnel/lib/seatunnel-flink-starter.jar
+2023-01-30 03:37:17,039 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.cpu, 1.0
+2023-01-30 03:37:17,039 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.flink.version, v1_13
+2023-01-30 03:37:17,427 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - Starting KubernetesApplicationClusterEntrypoint.
+2023-01-30 03:37:17,441 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - Install default filesystem.
+2023-01-30 03:37:17,444 INFO  org.apache.flink.core.fs.FileSystem                          [] - Hadoop is not in the classpath/dependencies. The extended set of supported File Systems via Hadoop is not available.
+2023-01-30 03:37:17,523 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - Install security context.
+2023-01-30 03:37:17,530 INFO  org.apache.flink.runtime.security.modules.HadoopModuleFactory [] - Cannot create Hadoop Security Module because Hadoop cannot be found in the Classpath.
+2023-01-30 03:37:17,535 INFO  org.apache.flink.runtime.security.modules.JaasModule         [] - Jaas file will be created as /tmp/jaas-7733114361898302833.conf.
+2023-01-30 03:37:17,540 INFO  org.apache.flink.runtime.security.contexts.HadoopSecurityContextFactory [] - Cannot install HadoopSecurityContext because Hadoop cannot be found in the Classpath.
+2023-01-30 03:37:17,541 INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - Initializing cluster services.
+2023-01-30 03:37:17,601 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils        [] - Trying to start actor system, external address seatunnel-flink-streaming-example.flink-operator:6123, bind address 0.0.0.0:6123.
+2023-01-30 03:37:18,810 INFO  akka.event.slf4j.Slf4jLogger                                 [] - Slf4jLogger started
+2023-01-30 03:37:18,837 INFO  akka.remote.Remoting                                         [] - Starting remoting
+2023-01-30 03:37:19,134 INFO  akka.remote.Remoting                                         [] - Remoting started; listening on addresses :[akka.tcp://flink@seatunnel-flink-streaming-example.flink-operator:6123]
+2023-01-30 03:37:19,416 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils        [] - Actor system started at akka.tcp://flink@seatunnel-flink-streaming-example.flink-operator:6123
+2023-01-30 03:37:19,442 INFO  org.apache.flink.configuration.Configuration                 [] - Config uses fallback configuration key 'jobmanager.rpc.address' instead of key 'rest.address'
+2023-01-30 03:37:19,508 INFO  org.apache.flink.runtime.blob.BlobServer                     [] - Created BLOB server storage directory /tmp/blobStore-95aeb732-5384-4e4a-bffa-0474981fe63b
+2023-01-30 03:37:19,512 INFO  org.apache.flink.runtime.blob.BlobServer                     [] - Started BLOB server at 0.0.0.0:6124 - max concurrent requests: 50 - max backlog: 1000
+2023-01-30 03:37:19,527 INFO  org.apache.flink.runtime.metrics.MetricRegistryImpl          [] - No metrics reporter configured, no metrics will be exposed/reported.
+2023-01-30 03:37:19,532 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils        [] - Trying to start actor system, external address seatunnel-flink-streaming-example.flink-operator:0, bind address 0.0.0.0:0.
+2023-01-30 03:37:19,611 INFO  akka.event.slf4j.Slf4jLogger                                 [] - Slf4jLogger started
+2023-01-30 03:37:19,616 INFO  akka.remote.Remoting                                         [] - Starting remoting
+2023-01-30 03:37:19,625 INFO  akka.remote.Remoting                                         [] - Remoting started; listening on addresses :[akka.tcp://flink-metrics@seatunnel-flink-streaming-example.flink-operator:34031]
+2023-01-30 03:37:19,633 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils        [] - Actor system started at akka.tcp://flink-metrics@seatunnel-flink-streaming-example.flink-operator:34031
+2023-01-30 03:37:19,715 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcService             [] - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at akka://flink-metrics/user/rpc/MetricQueryService .
+2023-01-30 03:37:19,815 INFO  org.apache.flink.configuration.Configuration                 [] - Config uses fallback configuration key 'jobmanager.rpc.address' instead of key 'rest.address'
+2023-01-30 03:37:19,816 INFO  org.apache.flink.runtime.jobmaster.MiniDispatcherRestEndpoint [] - Upload directory /tmp/flink-web-de7eb908-ae94-479b-91be-b37b1d82cea2/flink-web-upload does not exist.
+2023-01-30 03:37:19,817 INFO  org.apache.flink.runtime.jobmaster.MiniDispatcherRestEndpoint [] - Created directory /tmp/flink-web-de7eb908-ae94-479b-91be-b37b1d82cea2/flink-web-upload for file uploads.
+2023-01-30 03:37:19,929 INFO  org.apache.flink.runtime.jobmaster.MiniDispatcherRestEndpoint [] - Starting rest endpoint.
+2023-01-30 03:37:20,125 INFO  org.apache.flink.runtime.webmonitor.WebMonitorUtils          [] - Determined location of main cluster component log file: /opt/flink/log/flink--kubernetes-application-0-seatunnel-flink-streaming-example-65ddbd8dfb-hv62g.log
+2023-01-30 03:37:20,125 INFO  org.apache.flink.runtime.webmonitor.WebMonitorUtils          [] - Determined location of main cluster component stdout file: /opt/flink/log/flink--kubernetes-application-0-seatunnel-flink-streaming-example-65ddbd8dfb-hv62g.out
+2023-01-30 03:37:20,342 INFO  org.apache.flink.runtime.jobmaster.MiniDispatcherRestEndpoint [] - Rest endpoint listening at seatunnel-flink-streaming-example.flink-operator:8081
+2023-01-30 03:37:20,343 INFO  org.apache.flink.runtime.jobmaster.MiniDispatcherRestEndpoint [] - http://seatunnel-flink-streaming-example.flink-operator:8081 was granted leadership with leaderSessionID=00000000-0000-0000-0000-000000000000
+2023-01-30 03:37:20,345 INFO  org.apache.flink.runtime.jobmaster.MiniDispatcherRestEndpoint [] - Web frontend listening at http://seatunnel-flink-streaming-example.flink-operator:8081.
+2023-01-30 03:37:20,359 INFO  org.apache.flink.runtime.util.config.memory.ProcessMemoryUtils [] - The derived from fraction jvm overhead memory (102.400mb (107374184 bytes)) is less than its min value 192.000mb (201326592 bytes), min value will be used instead
+2023-01-30 03:37:20,360 INFO  org.apache.flink.runtime.util.config.memory.ProcessMemoryUtils [] - The derived from fraction network memory (57.600mb (60397978 bytes)) is less than its min value 64.000mb (67108864 bytes), min value will be used instead
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: blob.server.port, 6124
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.annotations, flinkdeployment.flink.apache.org/generation:2
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.replicas, 1
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.rpc.address, seatunnel-flink-streaming-example.flink-operator
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.taskmanager.cpu, 1.0
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.service-account, flink
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.cluster-id, seatunnel-flink-streaming-example
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.application.program-args, --config;/data/flink.streaming.conf
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.container.image, seatunnel:2.3.0-beta-flink-1.13
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: parallelism.default, 2
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.namespace, flink-operator
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.numberOfTaskSlots, 2
+2023-01-30 03:37:20,832 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.rest-service.exposed.type, ClusterIP
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.owner.reference, kind:FlinkDeployment,apiVersion:flink.apache.org/v1beta1,blockOwnerDeletion:false,controller:false,name:seatunnel-flink-streaming-example,uid:f747ba5c-d6aa-4eda-b48a-657129ea3550
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.application.main, org.apache.seatunnel.core.starter.flink.SeatunnelFlink
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.memory.process.size, 1024m
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.internal.jobmanager.entrypoint.class, org.apache.flink.kubernetes.entrypoint.KubernetesApplicationClusterEntrypoint
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: pipeline.name, seatunnel-flink-streaming-example
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.pod-template-file, /tmp/flink_op_generated_podTemplate_7854287393297098984.yaml
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: web.cancel.enable, false
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: execution.target, kubernetes-application
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.memory.process.size, 1024m
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.rpc.port, 6122
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: internal.cluster.execution-mode, NORMAL
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.pipeline.job-id, 93d6371daad64950107e02a7445c6182
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: execution.checkpointing.externalized-checkpoint-retention, RETAIN_ON_CANCELLATION
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: pipeline.jars, local:///opt/seatunnel/lib/seatunnel-flink-starter.jar
+2023-01-30 03:37:20,833 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: kubernetes.jobmanager.cpu, 1.0
+2023-01-30 03:37:20,834 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: $internal.flink.version, v1_13
+2023-01-30 03:37:20,901 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcService             [] - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager at akka://flink/user/rpc/resourcemanager_0 .
+2023-01-30 03:37:20,921 INFO  org.apache.flink.runtime.dispatcher.runner.DefaultDispatcherRunner [] - DefaultDispatcherRunner was granted leadership with leader id 00000000-0000-0000-0000-000000000000. Creating new DispatcherLeaderProcess.
+2023-01-30 03:37:20,926 INFO  org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess [] - Start SessionDispatcherLeaderProcess.
+2023-01-30 03:37:20,928 INFO  org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess [] - Recover all persisted job graphs.
+2023-01-30 03:37:20,929 INFO  org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess [] - Successfully recovered 0 persisted job graphs.
+2023-01-30 03:37:20,932 INFO  org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager [] - Starting the resource manager.
+2023-01-30 03:37:21,016 INFO  org.apache.flink.runtime.rpc.akka.AkkaRpcService             [] - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at akka://flink/user/rpc/dispatcher_1 .
+2023-01-30 03:37:21,038 INFO  org.apache.flink.client.ClientUtils                          [] - Starting program (detached: true)
+2023-01-30 03:37:21,204 INFO  org.apache.seatunnel.core.starter.config.ConfigBuilder       [] - Loading config file: /data/flink.streaming.conf
+2023-01-30 03:37:21,320 INFO  org.apache.seatunnel.core.starter.config.ConfigBuilder       [] - parsed config file: {
+    "env" : {
+        "execution.parallelism" : 1
+    },
+    "source" : [
+        {
+            "result_table_name" : "fake",
+            "plugin_name" : "FakeSourceStream",
+            "field_name" : "name,age"
+        }
+    ],
+    "transform" : [
+        {
+            "plugin_name" : "sql",
+            "sql" : "select name,age from fake"
+        }
+    ],
+    "sink" : [
+        {
+            "plugin_name" : "ConsoleSink"
+        }
+    ]
+}
+
+2023-01-30 03:37:22,631 INFO  org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery [] - Load SeaTunnelSource Plugin from /opt/seatunnel/connectors/seatunnel
+2023-01-30 03:37:22,704 ERROR org.apache.seatunnel.core.starter.Seatunnel                  [] -
+
+===============================================================================
+
+
+2023-01-30 03:37:22,704 ERROR org.apache.seatunnel.core.starter.Seatunnel                  [] - Fatal Error,
+
+2023-01-30 03:37:22,704 ERROR org.apache.seatunnel.core.starter.Seatunnel                  [] - Please submit bug report in https://github.com/apache/incubator-seatunnel/issues
+
+2023-01-30 03:37:22,704 ERROR org.apache.seatunnel.core.starter.Seatunnel                  [] - Reason:Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='FakeSourceStream'} not found.
+
+2023-01-30 03:37:22,706 ERROR org.apache.seatunnel.core.starter.Seatunnel                  [] - Exception StackTrace:java.lang.RuntimeException: Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='FakeSourceStream'} not found.
+    at org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery.createPluginInstance(AbstractPluginDiscovery.java:137)
+    at org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery.createPluginInstance(AbstractPluginDiscovery.java:99)
+    at org.apache.seatunnel.core.starter.flink.execution.SourceExecuteProcessor.initializePlugins(SourceExecuteProcessor.java:117)
+    at org.apache.seatunnel.core.starter.flink.execution.AbstractPluginExecuteProcessor.<init>(AbstractPluginExecuteProcessor.java:56)
+    at org.apache.seatunnel.core.starter.flink.execution.SourceExecuteProcessor.<init>(SourceExecuteProcessor.java:59)
+    at org.apache.seatunnel.core.starter.flink.execution.FlinkExecution.<init>(FlinkExecution.java:59)
+    at org.apache.seatunnel.core.starter.flink.command.FlinkApiTaskExecuteCommand.execute(FlinkApiTaskExecuteCommand.java:51)
+    at org.apache.seatunnel.core.starter.Seatunnel.run(Seatunnel.java:39)
+    at org.apache.seatunnel.core.starter.flink.SeatunnelFlink.main(SeatunnelFlink.java:34)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at org.apache.flink.client.program.PackagedProgram.callMainMethod(PackagedProgram.java:355)
+    at org.apache.flink.client.program.PackagedProgram.invokeInteractiveModeForExecution(PackagedProgram.java:222)
+    at org.apache.flink.client.ClientUtils.executeProgram(ClientUtils.java:114)
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:242)
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.lambda$runApplicationAsync$1(ApplicationDispatcherBootstrap.java:212)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+    at org.apache.flink.runtime.concurrent.akka.ActorSystemScheduledExecutorAdapter$ScheduledFutureTask.run(ActorSystemScheduledExecutorAdapter.java:159)
+    at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+    at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:44)
+    at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+    at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+    at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+    at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+2023-01-30 03:37:22,707 ERROR org.apache.seatunnel.core.starter.Seatunnel                  [] -
+===============================================================================
+
+
+
+2023-01-30 03:37:22,707 WARN  org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap [] - Application failed unexpectedly:
+java.util.concurrent.CompletionException: org.apache.flink.client.deployment.application.ApplicationExecutionException: Could not execute application.
+    at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:292) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:308) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:957) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:940) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:488) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:1990) ~[?:1.8.0_342]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:257) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.lambda$runApplicationAsync$1(ApplicationDispatcherBootstrap.java:212) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_342]
+    at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_342]
+    at org.apache.flink.runtime.concurrent.akka.ActorSystemScheduledExecutorAdapter$ScheduledFutureTask.run(ActorSystemScheduledExecutorAdapter.java:159) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:44) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [flink-dist_2.12-1.13.6.jar:1.13.6]
+Caused by: org.apache.flink.client.deployment.application.ApplicationExecutionException: Could not execute application.
+    ... 11 more
+Caused by: org.apache.flink.client.program.ProgramInvocationException: The main method caused an error: Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='FakeSourceStream'} not found.
+    at org.apache.flink.client.program.PackagedProgram.callMainMethod(PackagedProgram.java:372) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.program.PackagedProgram.invokeInteractiveModeForExecution(PackagedProgram.java:222) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.ClientUtils.executeProgram(ClientUtils.java:114) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:242) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    ... 10 more
+Caused by: java.lang.RuntimeException: Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='FakeSourceStream'} not found.
+    at org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery.createPluginInstance(AbstractPluginDiscovery.java:137) ~[?:?]
+    at org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery.createPluginInstance(AbstractPluginDiscovery.java:99) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.SourceExecuteProcessor.initializePlugins(SourceExecuteProcessor.java:117) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.AbstractPluginExecuteProcessor.<init>(AbstractPluginExecuteProcessor.java:56) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.SourceExecuteProcessor.<init>(SourceExecuteProcessor.java:59) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.FlinkExecution.<init>(FlinkExecution.java:59) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.command.FlinkApiTaskExecuteCommand.execute(FlinkApiTaskExecuteCommand.java:51) ~[?:?]
+    at org.apache.seatunnel.core.starter.Seatunnel.run(Seatunnel.java:39) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.SeatunnelFlink.main(SeatunnelFlink.java:34) ~[?:?]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_342]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_342]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_342]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_342]
+    at org.apache.flink.client.program.PackagedProgram.callMainMethod(PackagedProgram.java:355) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.program.PackagedProgram.invokeInteractiveModeForExecution(PackagedProgram.java:222) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.ClientUtils.executeProgram(ClientUtils.java:114) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:242) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    ... 10 more
+2023-01-30 03:37:22,717 ERROR org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - Fatal error occurred in the cluster entrypoint.
+org.apache.flink.util.FlinkException: Application failed unexpectedly.
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.lambda$runApplicationAndShutdownClusterAsync$0(ApplicationDispatcherBootstrap.java:170) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:836) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:811) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:488) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:1990) ~[?:1.8.0_342]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:257) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.lambda$runApplicationAsync$1(ApplicationDispatcherBootstrap.java:212) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_342]
+    at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_342]
+    at org.apache.flink.runtime.concurrent.akka.ActorSystemScheduledExecutorAdapter$ScheduledFutureTask.run(ActorSystemScheduledExecutorAdapter.java:159) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:44) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [flink-dist_2.12-1.13.6.jar:1.13.6]
+    at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [flink-dist_2.12-1.13.6.jar:1.13.6]
+Caused by: java.util.concurrent.CompletionException: org.apache.flink.client.deployment.application.ApplicationExecutionException: Could not execute application.
+    at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:292) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:308) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:957) ~[?:1.8.0_342]
+    at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:940) ~[?:1.8.0_342]
+    ... 13 more
+Caused by: org.apache.flink.client.deployment.application.ApplicationExecutionException: Could not execute application.
+    ... 11 more
+Caused by: org.apache.flink.client.program.ProgramInvocationException: The main method caused an error: Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='FakeSourceStream'} not found.
+    at org.apache.flink.client.program.PackagedProgram.callMainMethod(PackagedProgram.java:372) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.program.PackagedProgram.invokeInteractiveModeForExecution(PackagedProgram.java:222) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.ClientUtils.executeProgram(ClientUtils.java:114) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:242) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    ... 10 more
+Caused by: java.lang.RuntimeException: Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='FakeSourceStream'} not found.
+    at org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery.createPluginInstance(AbstractPluginDiscovery.java:137) ~[?:?]
+    at org.apache.seatunnel.plugin.discovery.AbstractPluginDiscovery.createPluginInstance(AbstractPluginDiscovery.java:99) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.SourceExecuteProcessor.initializePlugins(SourceExecuteProcessor.java:117) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.AbstractPluginExecuteProcessor.<init>(AbstractPluginExecuteProcessor.java:56) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.SourceExecuteProcessor.<init>(SourceExecuteProcessor.java:59) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.execution.FlinkExecution.<init>(FlinkExecution.java:59) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.command.FlinkApiTaskExecuteCommand.execute(FlinkApiTaskExecuteCommand.java:51) ~[?:?]
+    at org.apache.seatunnel.core.starter.Seatunnel.run(Seatunnel.java:39) ~[?:?]
+    at org.apache.seatunnel.core.starter.flink.SeatunnelFlink.main(SeatunnelFlink.java:34) ~[?:?]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_342]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_342]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_342]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_342]
+    at org.apache.flink.client.program.PackagedProgram.callMainMethod(PackagedProgram.java:355) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.program.PackagedProgram.invokeInteractiveModeForExecution(PackagedProgram.java:222) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.ClientUtils.executeProgram(ClientUtils.java:114) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    at org.apache.flink.client.deployment.application.ApplicationDispatcherBootstrap.runApplicationEntryPoint(ApplicationDispatcherBootstrap.java:242) ~[flink-dist_2.12-1.13.6.jar:1.13.6]
+    ... 10 more
+2023-01-30 03:37:24,150 INFO  akka.remote.RemoteActorRefProvider$RemotingTerminator        [] - Shutting down remote daemon.
+2023-01-30 03:37:24,209 INFO  akka.remote.RemoteActorRefProvider$RemotingTerminator        [] - Remote daemon shut down; proceeding with flushing remote transports.
+2023-01-30 03:37:24,209 INFO  akka.remote.RemoteActorRefProvider$RemotingTerminator        [] - Shutting down remote daemon.
+2023-01-30 03:37:24,214 INFO  akka.remote.RemoteActorRefProvider$RemotingTerminator        [] - Remote daemon shut down; proceeding with flushing remote transports.
+2023-01-30 03:37:24,306 INFO  akka.remote.RemoteActorRefProvider$RemotingTerminator        [] - Remoting shut down.
+2023-01-30 03:37:24,309 INFO  akka.remote.RemoteActorRefProvider$RemotingTerminator        [] - Remoting shut down.

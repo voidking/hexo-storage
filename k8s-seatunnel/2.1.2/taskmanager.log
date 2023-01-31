@@ -1,0 +1,35 @@
+2023-01-31 08:28:42,233 INFO  org.apache.flink.runtime.blob.BlobClient                     [] - Downloading 253359fdf6c06dd25636bcf2ca251327/p-c4ac3957b568317830edbd7fa74250dd8f335cac-7f8e1414b20ea73436363e2866919533 from seatunnel-flink-streaming-example.flink-operator/100.103.244.75:6124
+2023-01-31 08:28:42,293 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - No state backend has been configured, using default (HashMap) org.apache.flink.runtime.state.hashmap.HashMapStateBackend@67df41b3
+2023-01-31 08:28:42,294 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Checkpoint storage is set to 'jobmanager'
+2023-01-31 08:28:42,309 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: Custom Source -> Map -> to: Tuple2 -> Filter -> Map -> Sink: Print to Std. Out (1/1)#0 (2e81669ef7d12da7de63bb29b884c047) switched from DEPLOYING to INITIALIZING.
+2023-01-31 08:28:43,022 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: Custom Source -> Map -> to: Tuple2 -> Filter -> Map -> Sink: Print to Std. Out (1/1)#0 (2e81669ef7d12da7de63bb29b884c047) switched from INITIALIZING to RUNNING.
++I[Kid Xiong, 6]
++I[Gary, 63]
++I[Kid Xiong, 37]
++I[Ricky Huo, 39]
++I[Kid Xiong, 57]
++I[Gary, 88]
++I[Gary, 29]
++I[Ricky Huo, 8]
++I[Ricky Huo, 74]
++I[Kid Xiong, 70]
++I[Ricky Huo, 14]
++I[Kid Xiong, 94]
++I[Ricky Huo, 65]
++I[Ricky Huo, 13]
++I[Kid Xiong, 25]
++I[Ricky Huo, 90]
++I[Kid Xiong, 31]
++I[Gary, 42]
++I[Gary, 96]
++I[Kid Xiong, 45]
++I[Gary, 15]
++I[Kid Xiong, 53]
++I[Kid Xiong, 35]
++I[Kid Xiong, 2]
++I[Gary, 67]
++I[Ricky Huo, 25]
++I[Kid Xiong, 37]
++I[Ricky Huo, 64]
++I[Ricky Huo, 12]
+...
