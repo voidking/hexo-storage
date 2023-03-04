@@ -1,0 +1,14 @@
+devpi-ldap:
+  url: ldap://192.168.56.102:1389
+  user_search:
+    base: ou=staff,dc=voidking,dc=com
+    filter: (&(objectClass=user)(sAMAccountName={username}))
+    attribute_name: CN
+    userdn: user0@voidking.com
+    password: ********
+  group_search:
+    base: ou=staff,dc=voidking,dc=com
+    filter: (&(objectClass=group)(member={userdn}))
+    attribute_name: CN
+    userdn: user0@voidking.com
+    password: ********

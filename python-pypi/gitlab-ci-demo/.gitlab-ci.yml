@@ -1,0 +1,7 @@
+deploy:
+  script:
+    - pip install devpi-client
+    - devpi use https://devpi.localnet
+    - devpi login "gitlab-ci-token" --password="$CI_BUILD_TOKEN"
+    - devpi use "corona/prod"
+    - devpi upload --formats sdist,bdist_wheel
