@@ -1,2 +1,4 @@
-devpi-ldap
-devpi-auth-gitlab
+devpi==2.2.0
+devpi-client==5.2.2
+devpi-ldap==2.0.0
+devpi-auth-gitlab==1.7
