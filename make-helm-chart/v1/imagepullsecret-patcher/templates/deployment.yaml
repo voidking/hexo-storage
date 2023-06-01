@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/dockerconfigjson
+metadata:
+  name: image-pull-secret-src
+  namespace: imagepullsecret-patcher
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJoYXJib3Iudm9pZGtpbmcuY29tIjp7InVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IkhhcmJvcjEyMzQ1IiwiYXV0aCI6IllXUnRhVzQ2U0dGeVltOXlNVEl6TkRVPSJ9fX0=
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imagepullsecret-patcher
+  namespace: imagepullsecret-patcher
+  labels:
+    name: imagepullsecret-patcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: imagepullsecret-patcher
+  template:
+    metadata:
+      labels:
+        name: imagepullsecret-patcher
+    spec:
+      automountServiceAccountToken: true
+      serviceAccountName: imagepullsecret-patcher
+      containers:
+        - name: imagepullsecret-patcher
+          image: "quay.io/titansoft/imagepullsecret-patcher:v0.14"
+          env:
+            - name: CONFIG_FORCE
+              value: "true"
+            - name: CONFIG_DEBUG
+              value: "false"
+            - name: CONFIG_ALLSERVICEACCOUNT
+              value: "true"
+            - name: CONFIG_DOCKERCONFIGJSONPATH
+              value: "/app/secrets/.dockerconfigjson"
+            - name: CONFIG_SECRETNAME
+              value: "harbor-secret"
+          volumeMounts:
+            - name: src-dockerconfigjson
+              mountPath: "/app/secrets"
+              readOnly: true
+          resources:
+            requests:
+              cpu: 0.1
+              memory: 15Mi
+            limits:
+              cpu: 0.2
+              memory: 30Mi
+      volumes:
+        - name: src-dockerconfigjson
+          secret: 
+            secretName: image-pull-secret-src
