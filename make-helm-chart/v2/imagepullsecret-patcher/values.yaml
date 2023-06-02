@@ -1,0 +1,18 @@
+imageCredentials:
+  registry: quay.io
+  username: someone
+  password: sillyness
+  email: someone@host.com
+
+imagePullSecretName: harbor-secret
+
+image: quay.io/titansoft/imagepullsecret-patcher:v0.14
+
+resources:
+  requests:
+    cpu: 0.1
+    memory: 15Mi
+  limits:
+    cpu: 0.3
+    memory: 30Mi
+
