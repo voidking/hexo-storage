@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+    prometheus-operator-validated: "true"
+  labels:
+    app: kube-prometheus-stack
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.25.0
+    chart: kube-prometheus-stack-45.25.0
+    heritage: Helm
+    release: prometheus
+  name: custom-milvus-alert-rule
+  namespace: prometheus
+spec:
+  groups:
+    - name: milvus-prometheus
+      rules:
+        - alert: MilvusComponentsRunningStatusDone
+          annotations:
+            description: |-
+              Running status of Milvus components is done
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+            summary: Running status of Milvus components is done (instance {{ $labels.instance }})
+          expr: up{job="milvus/milvus"} == 0
+          for: 0m
+          labels:
+            severity: critical

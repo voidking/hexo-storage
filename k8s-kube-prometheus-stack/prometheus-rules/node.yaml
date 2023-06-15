@@ -1,0 +1,60 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+    prometheus-operator-validated: "true"
+  labels:
+    app: kube-prometheus-stack
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.25.0
+    chart: kube-prometheus-stack-45.25.0
+    heritage: Helm
+    release: prometheus
+  name: custom-node-alert-rule
+  namespace: prometheus
+spec:
+  groups:
+  - name: CPUAlerts
+    rules:
+    - alert: HighCPUUsage
+      expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "CPU Usage is too high!"
+        description: |-
+          CPU usage is above 80% on instance {{ $labels.instance }} more than 5 minites!
+          Current usage: {{ $value }}%
+  - name: MemoryAlerts
+    rules:
+    - alert: HighMemoryUsage
+      expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 80
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Memory Usage is too high!"
+        description: |-
+          Memory usage is above 80% on instance {{ $labels.instance }} more than 5 minites!
+          Current usage: {{ $value }}%
+  - name: DiskAlerts
+    rules:
+    - alert: HighDiskUsage
+      expr: (node_filesystem_size_bytes - node_filesystem_free_bytes) / node_filesystem_size_bytes * 100 > 80
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Disk Usage is too high!"
+        description: |-
+          Disk usage is above 80% on instance {{ $labels.instance }} more than 5 minites!
+          Current usage: {{ $value }}%
+
+
+
+  

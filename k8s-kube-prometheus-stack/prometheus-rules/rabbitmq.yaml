@@ -1,0 +1,135 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+    prometheus-operator-validated: "true"
+  labels:
+    app: kube-prometheus-stack
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.25.0
+    chart: kube-prometheus-stack-45.25.0
+    heritage: Helm
+    release: prometheus
+  name: custom-rabbitmq-alert-rule
+  namespace: prometheus
+spec:
+  groups:
+  - name: RabbitMQAlerts
+    rules:
+      - alert: RabbitmqDown
+        expr: rabbitmq_up == 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: Rabbitmq down (instance {{ $labels.instance }})
+          description: |-
+            RabbitMQ node down
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqClusterDown
+        expr: sum(rabbitmq_running) < 3
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: Rabbitmq cluster down (instance {{ $labels.instance }})
+          description: |-
+            Less than 3 nodes running in RabbitMQ cluster
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqClusterPartition
+        expr: rabbitmq_partitions > 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: Rabbitmq cluster partition (instance {{ $labels.instance }})
+          description: |-
+            Cluster partition
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqOutOfMemory
+        expr: rabbitmq_node_mem_used / rabbitmq_node_mem_limit * 100 > 90
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rabbitmq out of memory (instance {{ $labels.instance }})
+          description: |-
+            Memory available for RabbmitMQ is low (< 10%)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqTooManyConnections
+        expr: rabbitmq_connectionsTotal > 1000
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rabbitmq too many connections (instance {{ $labels.instance }})
+          description: |-
+            RabbitMQ instance has too many connections (> 1000)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqTooManyMessagesInQueue
+        expr: rabbitmq_queue_messages_ready{queue="XH_IS_FACE_SNAP_QUEUE"} > 1000
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rabbitmq too many messages in queue (instance {{ $labels.instance }})
+          description: |-
+            Queue is filling up (> 1000 msgs)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqSlowQueueConsuming
+        expr: time() -
+          rabbitmq_queue_head_message_timestamp{queue="XH_IS_FACE_SNAP_QUEUE"} >
+          60
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rabbitmq slow queue consuming (instance {{ $labels.instance }})
+          description: |-
+            Queue messages are consumed slowly (> 60s)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqNoConsumer
+        expr: rabbitmq_queue_consumers == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: Rabbitmq no consumer (instance {{ $labels.instance }})
+          description: |-
+            Queue has no consumer
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqTooManyConsumers
+        expr: rabbitmq_queue_consumers{queue="XH_IS_FACE_SNAP_QUEUE"} > 1
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: Rabbitmq too many consumers (instance {{ $labels.instance }})
+          description: |-
+            Queue should have only 1 consumer
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+      - alert: RabbitmqUnactiveExchange
+        expr: rate(rabbitmq_exchange_messages_published_in_total{exchange="XH_IS_FACE_SNAP_EXCHANGE"}[1m])
+          < 5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rabbitmq unactive exchange (instance {{ $labels.instance }})
+          description: |-
+            Exchange receive less than 5 msgs per second
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}

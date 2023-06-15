@@ -1,0 +1,53 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+    prometheus-operator-validated: "true"
+  labels:
+    app: kube-prometheus-stack
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.25.0
+    chart: kube-prometheus-stack-45.25.0
+    heritage: Helm
+    release: prometheus
+  name: custom-redis-alert-rule
+  namespace: prometheus
+spec:
+  groups:
+  - name: RedisAlerts
+    rules: 
+     - alert: RedisDown
+       expr: redis_up{} == 0
+       for: 2m
+       labels:
+         severity: error
+       annotations:
+         summary: Redis instance {{ "{{ $labels.instance }}" }} down
+         description: Redis instance {{ "{{ $labels.instance }}" }} is down.
+     - alert: RedisMemoryHigh
+       expr: >
+          redis_memory_used_bytes{} * 100
+          /
+          redis_memory_max_bytes{}
+          > 90 <= 100
+       for: 2m
+       labels:
+         severity: error
+       annotations:
+         summary: Redis instance {{ "{{ $labels.instance }}" }} is using too much memory
+         description: |
+            Redis instance {{ "{{ $labels.instance }}" }} is using {{ "{{ $value }}" }}% of its available memory.
+     - alert: RedisKeyEviction
+       expr: |
+         increase(redis_evicted_keys_total{}[5m]) > 0
+       for: 1s
+       labels:
+         severity: error
+       annotations:
+         summary: Redis instance {{ "{{ $labels.instance }}" }} has evicted keys
+         description: |
+           Redis instance {{ "{{ $labels.instance }}" }} has evicted {{ "{{ $value }}" }} keys in the last 5 minutes.

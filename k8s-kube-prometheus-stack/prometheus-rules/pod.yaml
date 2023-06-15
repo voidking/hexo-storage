@@ -1,0 +1,52 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+    prometheus-operator-validated: "true"
+  labels:
+    app: kube-prometheus-stack
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.25.0
+    chart: kube-prometheus-stack-45.25.0
+    heritage: Helm
+    release: prometheus
+  name: custom-pod-alert-rule
+  namespace: prometheus
+spec:
+  groups:
+  - name: PodCPUAlerts
+    rules:
+    - alert: HighCPUUsage
+      expr: >-
+        sum(rate(container_cpu_usage_seconds_total{}[5m])) by (pod, namespace) 
+        / (sum(container_spec_cpu_quota{}/100000) by (pod, namespace)) * 100
+        > 80
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Pod cpu usage is too high!"
+        description: |-
+          Pod cpu usage is above 80% on {{ $labels.namespace }}/{{ $labels.pod }} more than 5 minites!
+          Current usage: {{ $value }}%
+  - name: PodMemoryAlerts
+    rules:
+    - alert: HighMemoryUsage
+      expr: >-
+        sum(container_memory_rss{}) by(pod, namespace) 
+        / sum(container_spec_memory_limit_bytes{}) by(pod, namespace) * 100 != +inf > 80
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Pod memory usage is too high!"
+        description: |-
+          Pod memory usage is above 80% on {{ $labels.namespace }}/{{ $labels.pod }} more than 5 minites!
+          Current usage: {{ $value }}%
+
+
+
