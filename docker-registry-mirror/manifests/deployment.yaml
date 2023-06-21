@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: docker-registry-mirror
+  name: docker-registry-mirror
+  namespace: devops
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: docker-registry-mirror
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: docker-registry-mirror
+    spec:
+      containers:
+      - env:
+        - name: REGISTRY_PROXY_REMOTEURL
+          value: https://registry-1.docker.io
+        - name: HTTPS_PROXY
+          # 这里配置梯子
+          value: http://<user>:<password>@<proxy_ip>:<proxy_port>
+        image: registry:2.7.1
+        imagePullPolicy: IfNotPresent
+        name: registry
+        resources:
+          requests:
+            cpu: "1"
+            memory: 2Gi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/lib/registry
+          name: docker-registry
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      serviceAccount: default
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: docker-registry
+        persistentVolumeClaim:
+          claimName: docker-registry-pvc
