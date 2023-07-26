@@ -72,6 +72,8 @@ if [[ $(check_cadvisor;echo $?) -eq 0 ]];then
   if [[ $(check_cadvisor_running; echo $?) -ne 0 ]];then
     echo "cAdvisor is not running. Start it ..."
     start_cadvisor
+  else
+    echo "cAdvisor is running."
   fi
 else
   echo "cAdvisor is not installed. Install it ..."
