@@ -1,0 +1,37 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+  creationTimestamp: "2023-07-27T07:47:17Z"
+  generation: 1
+  labels:
+    app: kube-prometheus-stack-kube-controller-manager
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.25.0
+    chart: kube-prometheus-stack-45.25.0
+    heritage: Helm
+    release: prometheus
+  name: prometheus-kube-prometheus-kube-controller-manager
+  namespace: prometheus
+  resourceVersion: "13883762"
+  uid: 457fed16-5ed9-4d0b-a109-42321667a48a
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    port: http-metrics
+    scheme: https
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+  jobLabel: jobLabel
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      app: kube-prometheus-stack-kube-controller-manager
+      release: prometheus

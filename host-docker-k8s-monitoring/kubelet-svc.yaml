@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: prometheus-operator
+    app.kubernetes.io/name: kubelet
+    k8s-app: kubelet
+  name: prometheus-kube-prometheus-kubelet
+  namespace: kube-system
+spec:
+  clusterIP: None
+  clusterIPs:
+  - None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  - IPv6
+  ipFamilyPolicy: RequireDualStack
+  ports:
+  - name: https-metrics
+    port: 10250
+  - name: http-metrics
+    port: 10255
+  - name: cadvisor
+    port: 4194
