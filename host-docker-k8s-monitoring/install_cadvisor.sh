@@ -58,6 +58,14 @@ install_cadvisor() {
   -v /dev/disk/:/dev/disk:ro \
   gcr.dockerproxy.com/cadvisor/cadvisor:v0.47.1 \
   --housekeeping_interval=30s \
+  --max_housekeeping_interval=35s \
+  --global_housekeeping_interval=30s \
+  --allow_dynamic_housekeeping=true \
+  --event_storage_event_limit=default=0 \
+  --event_storage_age_limit=default=0 \
+  --storage_duration=1m0s \
+  --store_container_labels=false \
+  --whitelisted_container_labels=io.kubernetes.container.name,io.kubernetes.pod.name,io.kubernetes.pod.namespace \
   --docker_only=true \
   --disable_metrics=advtcp,cpu_topology,cpuset,hugetlb,memory_numa,process,referenced_memory,resctrl,sched,tcp,udp,percpu,perf_event,disk,diskIO
 }
