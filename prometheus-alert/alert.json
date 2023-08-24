@@ -1,0 +1,64 @@
+{
+  "receiver": "event",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "ContainerUnhealthy",
+        "alerttype": "event",
+        "container": "slime",
+        "namespace": "mesh-operator",
+        "pod": "limiter-7749f7666c-swspf",
+        "severity": "warning"
+      },
+      "annotations": {
+        "message": "Readiness probe failed: Get \"http: //10.244.13.242: 8081/modules/readyz\": dial tcp 10.244.13.242:8081: connect: connection refused",
+        "summary": "Container is unhealthy",
+        "summaryCn": "容器状态不良"
+      },
+      "startsAt": "2023-08-24T07:58:10.071665596Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "",
+      "fingerprint": "08e03f1cd91265b5"
+    },
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "ContainerUnhealthy",
+        "alerttype": "event",
+        "container": "slime",
+        "namespace": "mesh-operator",
+        "pod": "limiter-7749f7666c-zwbw4",
+        "severity": "warning"
+      },
+      "annotations": {
+        "message": "Readiness probe failed: Get \"http: //10.244.13.250: 8081/modules/readyz\": dial tcp 10.244.13.250:8081: connect: connection refused",
+        "summary": "Container is unhealthy",
+        "summaryCn": "容器状态不良"
+      },
+      "startsAt": "2023-08-24T08:02:34.445725844Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "",
+      "fingerprint": "8590dc19ef6abe2c"
+    }
+  ],
+  "groupLabels": {
+    "namespace": "mesh-operator"
+  },
+  "commonLabels": {
+    "alertname": "ContainerUnhealthy",
+    "alerttype": "event",
+    "container": "slime",
+    "namespace": "mesh-operator",
+    "severity": "warning"
+  },
+  "commonAnnotations": {
+    "summary": "Container is unhealthy",
+    "summaryCn": "容器状态不良"
+  },
+  "externalURL": "http://alertmanager-main-1:9093",
+  "version": "4",
+  "groupKey": "{}/{alerttype=\"event\"}:{namespace=\"mesh-operator\"}",
+  "truncatedAlerts": 0
+}
