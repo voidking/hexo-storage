@@ -1,0 +1,60 @@
+# HELP nginx_http_request_size_bytes Total amount of received bytes
+# TYPE nginx_http_request_size_bytes counter
+nginx_http_request_size_bytes{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 73
+nginx_http_request_size_bytes{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 77
+# HELP nginx_http_response_count_total Amount of processed HTTP requests
+# TYPE nginx_http_response_count_total counter
+nginx_http_response_count_total{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 1
+nginx_http_response_count_total{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 1
+# HELP nginx_http_response_size_bytes Total amount of transferred bytes
+# TYPE nginx_http_response_size_bytes counter
+nginx_http_response_size_bytes{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 612
+nginx_http_response_size_bytes{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 153
+# HELP nginx_http_response_time_seconds Time needed by NGINX to handle requests
+# TYPE nginx_http_response_time_seconds summary
+nginx_http_response_time_seconds{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",quantile="0.5"} 0
+nginx_http_response_time_seconds{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",quantile="0.9"} 0
+nginx_http_response_time_seconds{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",quantile="0.99"} 0
+nginx_http_response_time_seconds_sum{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 0
+nginx_http_response_time_seconds_count{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 1
+nginx_http_response_time_seconds{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",quantile="0.5"} 0
+nginx_http_response_time_seconds{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",quantile="0.9"} 0
+nginx_http_response_time_seconds{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",quantile="0.99"} 0
+nginx_http_response_time_seconds_sum{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 0
+nginx_http_response_time_seconds_count{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 1
+# HELP nginx_http_response_time_seconds_hist Time needed by NGINX to handle requests
+# TYPE nginx_http_response_time_seconds_hist histogram
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.005"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.01"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.025"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.05"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.1"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.25"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="0.5"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="1"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="2.5"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="5"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="10"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200",le="+Inf"} 1
+nginx_http_response_time_seconds_hist_sum{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 0
+nginx_http_response_time_seconds_hist_count{app="default",host="localhost",method="GET",request_method="GET",request_uri="/",status="200"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.005"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.01"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.025"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.05"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.1"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.25"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="0.5"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="1"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="2.5"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="5"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="10"} 1
+nginx_http_response_time_seconds_hist_bucket{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404",le="+Inf"} 1
+nginx_http_response_time_seconds_hist_sum{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 0
+nginx_http_response_time_seconds_hist_count{app="default",host="localhost",method="GET",request_method="GET",request_uri="/test",status="404"} 1
+# HELP nginx_parse_errors_total Total number of log file lines that could not be parsed
+# TYPE nginx_parse_errors_total counter
+nginx_parse_errors_total 0
+# HELP prometheus_nginxlog_exporter_build_info A metric with a constant '1' value labeled by version, revision, branch, and goversion from which prometheus_nginxlog_exporter was built.
+# TYPE prometheus_nginxlog_exporter_build_info gauge
+prometheus_nginxlog_exporter_build_info{branch="v1.10.0",goversion="go1.18.6",revision="9274be256a47378a9930164023d16e1958e96292",version="1.10.0"} 1
