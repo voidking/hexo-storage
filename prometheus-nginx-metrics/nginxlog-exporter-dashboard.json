@@ -367,7 +367,7 @@
             "type": "prometheus",
             "uid": "P4030FE15BABB7045"
           },
-          "expr": "nginx_http_response_time_seconds{quantile=\"0.9\",method=\"GET\",status=\"200\",host=\"$domain\",request_uri=~\"$interface\"}",
+          "expr": "nginx_http_response_time_seconds{quantile=\"0.9\",status=\"200\",host=\"$domain\",request_uri=~\"$interface\"}",
           "refId": "A"
         }
       ],
