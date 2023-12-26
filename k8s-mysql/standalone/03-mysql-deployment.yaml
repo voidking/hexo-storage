@@ -26,8 +26,14 @@ spec:
         - containerPort: 3306
           name: mysql
         volumeMounts:
+        ## 覆盖 /etc/mysql/conf.d 目录进行挂载
+        # - name: mysqld-config
+        #   mountPath: "/etc/mysql/conf.d"
+        #   readOnly: true
+        # 不覆盖 /etc/mysql/conf.d 目录，挂载单个文件
         - name: mysqld-config
-          mountPath: "/etc/mysql/conf.d"
+          mountPath: "/etc/mysql/conf.d/mysqld-custom.cnf"
+          subPath: "mysqld-custom.cnf"
           readOnly: true
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
