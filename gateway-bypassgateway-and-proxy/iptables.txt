@@ -1,0 +1,64 @@
+Chain PREROUTING (policy ACCEPT 172M packets, 12G bytes)
+ pkts bytes target     prot opt in     out     source               destination
+ 172M   12G TP_PRE     all  --  any    any     anywhere             anywhere
+
+Chain INPUT (policy ACCEPT 172M packets, 12G bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain OUTPUT (policy ACCEPT 172M packets, 12G bytes)
+ pkts bytes target     prot opt in     out     source               destination
+ 172M   12G TP_OUT     all  --  any    any     anywhere             anywhere
+
+Chain POSTROUTING (policy ACCEPT 172M packets, 12G bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain TP_MARK (3 references)
+ pkts bytes target     prot opt in     out     source               destination
+   11   572 MARK       tcp  --  any    any     anywhere             anywhere             tcp flags:FIN,SYN,RST,ACK/SYN MARK or 0x40
+  576 42570 MARK       udp  --  any    any     anywhere             anywhere             ctstate NEW MARK or 0x40
+  588 43182 CONNMARK   all  --  any    any     anywhere             anywhere             CONNMARK save
+
+Chain TP_OUT (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+ 172M   12G RETURN     all  --  any    any     anywhere             anywhere             mark match 0x80/0x80
+ 5784 2218K TP_RULE    tcp  --  any    any     anywhere             anywhere             ADDRTYPE match src-type LOCAL dst-type !LOCAL
+  581 42866 TP_RULE    udp  --  any    any     anywhere             anywhere             ADDRTYPE match src-type LOCAL dst-type !LOCAL
+
+Chain TP_PRE (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+ 172M   12G RETURN     all  --  lo     any     anywhere             anywhere             mark match ! 0x40/0xc0
+   36  3737 TP_RULE    tcp  --  any    any     anywhere             anywhere             ADDRTYPE match src-type !LOCAL dst-type !LOCAL
+   21  3834 TP_RULE    udp  --  any    any     anywhere             anywhere             ADDRTYPE match src-type !LOCAL dst-type !LOCAL
+  824 46554 TPROXY     tcp  --  any    any     anywhere             anywhere             mark match 0x40/0xc0 TPROXY redirect 127.0.0.1:52345 mark 0x0/0x0
+  581 42866 TPROXY     udp  --  any    any     anywhere             anywhere             mark match 0x40/0xc0 TPROXY redirect 127.0.0.1:52345 mark 0x0/0x0
+
+Chain TP_RULE (4 references)
+ pkts bytes target     prot opt in     out     source               destination
+ 6422 2269K CONNMARK   all  --  any    any     anywhere             anywhere             CONNMARK restore
+  818 46278 RETURN     all  --  any    any     anywhere             anywhere             mark match 0x40/0xc0
+    0     0 RETURN     all  --  docker+ any     anywhere             anywhere
+    0     0 RETURN     all  --  br+    any     anywhere             anywhere
+    0     0 RETURN     all  --  veth+  any     anywhere             anywhere
+    0     0 RETURN     all  --  ppp+   any     anywhere             anywhere
+  567 41886 TP_MARK    udp  --  any    any     anywhere             anywhere             udp dpt:domain
+    0     0 TP_MARK    tcp  --  any    any     anywhere             anywhere             tcp dpt:domain
+  567 41886 RETURN     all  --  any    any     anywhere             anywhere             mark match 0x40/0xc0
+ 1661  371K RETURN     all  --  any    any     anywhere             192.168.50.0/24
+    0     0 RETURN     all  --  any    any     anywhere             loopback/8
+    0     0 RETURN     all  --  any    any     anywhere             default
+    0     0 RETURN     all  --  any    any     anywhere             10.0.0.0/8
+    0     0 RETURN     all  --  any    any     anywhere             100.64.0.0/10
+    0     0 RETURN     all  --  any    any     anywhere             link-local/16
+    0     0 RETURN     all  --  any    any     anywhere             172.16.0.0/12
+    0     0 RETURN     all  --  any    any     anywhere             192.0.0.0/24
+    0     0 RETURN     all  --  any    any     anywhere             192.0.2.0/24
+    0     0 RETURN     all  --  any    any     anywhere             192.88.99.0/24
+ 3355 1808K RETURN     all  --  any    any     anywhere             192.168.0.0/16
+    0     0 RETURN     all  --  any    any     anywhere             198.51.100.0/24
+    0     0 RETURN     all  --  any    any     anywhere             203.0.113.0/24
+    0     0 RETURN     all  --  any    any     anywhere             base-address.mcast.net/4
+    0     0 RETURN     all  --  any    any     anywhere             240.0.0.0/4
+   21  1296 TP_MARK    all  --  any    any     anywhere             anywhere
