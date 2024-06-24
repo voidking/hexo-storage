@@ -46,7 +46,7 @@ Chain TP_RULE (4 references)
   567 41886 TP_MARK    udp  --  any    any     anywhere             anywhere             udp dpt:domain
     0     0 TP_MARK    tcp  --  any    any     anywhere             anywhere             tcp dpt:domain
   567 41886 RETURN     all  --  any    any     anywhere             anywhere             mark match 0x40/0xc0
- 1661  371K RETURN     all  --  any    any     anywhere             192.168.50.0/24
+ 1661  371K RETURN     all  --  any    any     anywhere             192.168.56.0/24
     0     0 RETURN     all  --  any    any     anywhere             loopback/8
     0     0 RETURN     all  --  any    any     anywhere             default
     0     0 RETURN     all  --  any    any     anywhere             10.0.0.0/8

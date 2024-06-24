@@ -46,7 +46,7 @@ COMMIT
 -A TP_RULE -p udp -m udp --dport 53 -j TP_MARK
 -A TP_RULE -p tcp -m tcp --dport 53 -j TP_MARK
 -A TP_RULE -m mark --mark 0x40/0xc0 -j RETURN
--A TP_RULE -d 192.168.50.0/24 -j RETURN
+-A TP_RULE -d 192.168.56.0/24 -j RETURN
 -A TP_RULE -d 127.0.0.0/8 -j RETURN
 -A TP_RULE -d 0.0.0.0/32 -j RETURN
 -A TP_RULE -d 10.0.0.0/8 -j RETURN
