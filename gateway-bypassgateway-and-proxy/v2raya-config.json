@@ -1,0 +1,1027 @@
+{
+  "log": {
+    "access": "",
+    "error": "none",
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 20170,
+      "protocol": "socks",
+      "listen": "0.0.0.0",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "metadataOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "streamSettings": null,
+      "tag": "socks"
+    },
+    {
+      "port": 20171,
+      "protocol": "http",
+      "listen": "0.0.0.0",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "metadataOnly": false
+      },
+      "streamSettings": null,
+      "tag": "http"
+    },
+    {
+      "port": 20172,
+      "protocol": "http",
+      "listen": "0.0.0.0",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "metadataOnly": false
+      },
+      "streamSettings": null,
+      "tag": "rule-http"
+    },
+    {
+      "port": 52345,
+      "protocol": "dokodemo-door",
+      "listen": "0.0.0.0",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "fakedns"
+        ],
+        "metadataOnly": false
+      },
+      "settings": {
+        "network": "tcp,udp",
+        "followRedirect": true
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tproxy": "tproxy"
+        }
+      },
+      "tag": "transparent"
+    },
+    {
+      "port": 46772,
+      "protocol": "dokodemo-door",
+      "listen": "127.0.0.1",
+      "sniffing": {
+        "enabled": false,
+        "metadataOnly": false
+      },
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "streamSettings": null,
+      "tag": "api-in"
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "『  [黄金][台.高雄市][0.8] 主力 ①』",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            ...
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "serverName": "apac-tw-khh-01-edgecast-v2.getbdns.xyz"
+        },
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "apac-tw-khh-01-edgecast-v2.getbdns.xyz"
+          }
+        },
+        "sockopt": {
+          "mark": 128
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "mark": 128
+        }
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        
+      }
+    },
+    {
+      "tag": "dns-out",
+      "protocol": "dns",
+      "settings": {
+        "port": 53,
+        "address": "119.29.29.29",
+        "network": "udp"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "mark": 128
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "domainMatcher": "mph",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "relay-v2.ksrd.xyz"
+        ],
+        "port": "2083"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "relay-v2.ksrd.xyz"
+        ],
+        "port": "2083"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "relay-v2.ksrd.xyz"
+        ],
+        "port": "2083"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "relay-v2.ksrd.xyz"
+        ],
+        "port": "2083"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "relay-v2.ksrd.xyz"
+        ],
+        "port": "2083"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "8.8.8.8"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "4.2.2.4"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "94.140.14.14"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "176.103.130.130"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "156.154.70.5"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "8.26.56.26"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "91.239.100.100"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "89.233.43.71"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "1.1.1.1"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "208.67.222.222"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "38.132.106.139"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "9.9.9.9"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "192.71.245.208"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "84.200.69.80"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "77.88.8.88"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "185.228.168.9"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "45.33.97.5"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "64.6.64.6"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "198.54.117.10"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "195.46.39.39"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "8.8.4.4"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "1.0.0.1"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "208.67.220.220"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "194.187.251.67"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "149.112.112.112"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "94.247.43.254"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "84.200.70.40"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "77.88.8.2"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "156.154.71.5"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "185.228.169.9"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "8.20.247.20"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "37.235.1.177"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "64.6.65.6"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "198.54.117.11"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "195.46.39.40"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "176.103.130.131"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "223.6.6.6"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "119.29.29.29"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "dns"
+        ],
+        "ip": [
+          "208.67.220.220"
+        ],
+        "port": "5353"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "dns"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "dns-out",
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "transparent"
+        ],
+        "ip": [
+          "ext:geoip-only-cn-private.dat:private",
+          "127.0.0.1/8",
+          "192.168.50.222/24"
+        ],
+        "port": "53"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "domain": [
+          "domain:push-apple.com.akadns.net",
+          "domain:push.apple.com"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "domain": [
+          "domain:mail.qq.com"
+        ]
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "domain": [
+          "geosite:google-scholar"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "domain": [
+          "geosite:category-scholar-!cn",
+          "geosite:category-scholar-cn"
+        ]
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "domain": [
+          "geosite:geolocation-!cn",
+          "geosite:google"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "domain": [
+          "geosite:cn"
+        ]
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "ip": [
+          "geoip:hk",
+          "geoip:mo"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ],
+        "ip": [
+          "ext:geoip-only-cn-private.dat:private",
+          "ext:geoip-only-cn-private.dat:cn",
+          "127.0.0.1/8",
+          "192.168.50.222/24"
+        ]
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "inboundTag": [
+          "rule-http",
+          "rule-socks",
+          "transparent"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "api-out",
+        "inboundTag": [
+          "api-in"
+        ]
+      },
+      {
+        "type": "field",
+        "balancerTag": "proxy",
+        "port": "0-65535"
+      }
+    ],
+    "balancers": [
+      {
+        "tag": "proxy",
+        "selector": [
+          "『  [黄金][新.新加坡][0.8] 主力 ①』",
+          "『  [黄金][新.新加坡][0.8] 主力 ②』",
+          "『  [黄金][新.新加坡][0.8] 主力 ③』",
+          "『  [黄金][台.高雄市][0.8] 主力 ①』",
+          "『  [黄金][台.高雄市][0.8] 主力 ②』"
+        ],
+        "strategy": {
+          "type": "leastping",
+          "settings": {
+            "observerTag": "proxy"
+          }
+        }
+      }
+    ]
+  },
+  "dns": {
+    "hosts": {
+      "courier.push.apple.com": [
+        "1-courier.push.apple.com"
+      ]
+    },
+    "servers": [
+      "fakedns",
+      {
+        "address": "fakedns",
+        "domains": [
+          "geosite:cn"
+        ]
+      },
+      {
+        "address": "8.8.8.8",
+        "port": 53
+      },
+      {
+        "address": "4.2.2.4",
+        "port": 53
+      },
+      {
+        "address": "94.140.14.14",
+        "port": 53
+      },
+      {
+        "address": "176.103.130.130",
+        "port": 53
+      },
+      {
+        "address": "156.154.70.5",
+        "port": 53
+      },
+      {
+        "address": "8.26.56.26",
+        "port": 53
+      },
+      {
+        "address": "91.239.100.100",
+        "port": 53
+      },
+      {
+        "address": "89.233.43.71",
+        "port": 53
+      },
+      {
+        "address": "1.1.1.1",
+        "port": 53
+      },
+      {
+        "address": "208.67.222.222",
+        "port": 53
+      },
+      {
+        "address": "38.132.106.139",
+        "port": 53
+      },
+      {
+        "address": "9.9.9.9",
+        "port": 53
+      },
+      {
+        "address": "192.71.245.208",
+        "port": 53
+      },
+      {
+        "address": "84.200.69.80",
+        "port": 53
+      },
+      {
+        "address": "77.88.8.88",
+        "port": 53
+      },
+      {
+        "address": "156.154.70.5",
+        "port": 53
+      },
+      {
+        "address": "185.228.168.9",
+        "port": 53
+      },
+      {
+        "address": "8.26.56.26",
+        "port": 53
+      },
+      {
+        "address": "91.239.100.100",
+        "port": 53
+      },
+      {
+        "address": "45.33.97.5",
+        "port": 53
+      },
+      {
+        "address": "64.6.64.6",
+        "port": 53
+      },
+      {
+        "address": "198.54.117.10",
+        "port": 53
+      },
+      {
+        "address": "195.46.39.39",
+        "port": 53
+      },
+      {
+        "address": "176.103.130.130",
+        "port": 53
+      },
+      {
+        "address": "8.8.4.4",
+        "port": 53
+      },
+      {
+        "address": "1.0.0.1",
+        "port": 53
+      },
+      {
+        "address": "208.67.220.220",
+        "port": 53
+      },
+      {
+        "address": "194.187.251.67",
+        "port": 53
+      },
+      {
+        "address": "149.112.112.112",
+        "port": 53
+      },
+      {
+        "address": "94.247.43.254",
+        "port": 53
+      },
+      {
+        "address": "84.200.70.40",
+        "port": 53
+      },
+      {
+        "address": "77.88.8.2",
+        "port": 53
+      },
+      {
+        "address": "156.154.71.5",
+        "port": 53
+      },
+      {
+        "address": "185.228.169.9",
+        "port": 53
+      },
+      {
+        "address": "8.20.247.20",
+        "port": 53
+      },
+      {
+        "address": "89.233.43.71",
+        "port": 53
+      },
+      {
+        "address": "37.235.1.177",
+        "port": 53
+      },
+      {
+        "address": "64.6.65.6",
+        "port": 53
+      },
+      {
+        "address": "198.54.117.11",
+        "port": 53
+      },
+      {
+        "address": "195.46.39.40",
+        "port": 53
+      },
+      {
+        "address": "176.103.130.131",
+        "port": 53
+      },
+      {
+        "address": "223.6.6.6",
+        "port": 53,
+        "domains": [
+          "geosite:cn"
+        ]
+      },
+      {
+        "address": "119.29.29.29",
+        "port": 53,
+        "domains": [
+          "geosite:cn"
+        ]
+      },
+      {
+        "address": "tcp://208.67.220.220:5353",
+        "domains": [
+          "relay-v2.ksrd.xyz"
+        ]
+      },
+      {
+        "address": "tcp://119.29.29.29:53",
+        "domains": [
+          "relay-v2.ksrd.xyz"
+        ]
+      }
+    ],
+    "tag": "dns"
+  },
+  "multiObservatory": {
+    "observers": [
+      {
+        "tag": "proxy",
+        "settings": {
+          "subjectSelector": [
+            "『  [黄金][新.新加坡][0.8] 主力 ①』"
+          ],
+          "probeURL": "https://gstatic.com/generate_204",
+          "probeInterval": "10s"
+        }
+      }
+    ]
+  },
+  "api": {
+    "tag": "api-out",
+    "services": [
+      "LoggerService",
+      "ObservatoryService"
+    ]
+  }
+}
